@@ -2,6 +2,8 @@
 # London weather web application 
 ### A simple serverless weather app deployed to AWS using Terraform 
 
+## [Here is what it looks like](https://mxa6w7azhe.execute-api.us-east-1.amazonaws.com/web)
+
 ## Tools versions/access prerequisites:
 - AWS CLI: aws-cli/2.6.4 Python/3.9.11
 - Terraform: Terraform v1.3.5
@@ -107,3 +109,13 @@ If you don't, you will end up with an error about the file exceeding GitHub's fi
 
 ## **** Extra: Configure a custom domain for the API to make the URL look beautiful
 - This section is currently pending as I am sorting some issues with my DNS providers. I will update this part of the guide once that is sorted; might as well move my domains to Route53 while at it. In the meantime though, here is the proposed URL: weather.valentineezeja.com.
+
+# Destroy the solution
+- To destroy the solution, run the following command from the root directory of the project:
+        terraform destroy
+- Confirm command completion and that all resources have been fdeleted.
+
+#Conclusion and final thoughts
+- Maintenance: As this is a serverless application, not much maintenance is needed. Only the Terraform code needs to be maintained to ensure that variables, credentials and modules are always correct and up to date.
+- This solution can be further improved by packaging the function into a container image. This is not an immediate requirement but will come in handy if/when the function size scales beyond the Limits allowed by Lambda.
+- Another area of improvement would be changing the endpoint configuration of the API gateway to Edge-optimised. or Regional (existing in a single AWS region). This deployment option typically improves connection time for geographically diverse clients.
