@@ -117,7 +117,7 @@ If you don't, you will end up with an error about the file exceeding GitHub's fi
         terraform destroy
 - Confirm command completion and that all resources have been fdeleted.
 
-#Conclusion and final thoughts
+# Conclusion and final thoughts
 - Maintenance: As this is a serverless application, not much maintenance is needed. Only the Terraform code needs to be maintained to ensure that variables, credentials and modules are always correct and up to date.
 - This solution can be further improved by packaging the function into a container image. This is not an immediate requirement but will come in handy if/when the function size scales beyond the Limits allowed by Lambda.
 - Another area of improvement would be changing the endpoint configuration of the API gateway to Edge-optimised. or Regional (existing in a single AWS region). This deployment option typically improves connection time for geographically diverse clients.
