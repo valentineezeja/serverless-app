@@ -48,6 +48,8 @@ The only temporary limitation to this solution is that AWS Lambda has size limit
 
 - Extra: Configure a custom domain for the API to make the URL look beautiful 🤳🏾
 
+- Destroy the solution 
+
 # Create the web app using html/css/js
 The code for the app can be found [here](https://github.com/valentineezeja/Project-1.0/tree/main/web-files). I have added as much comment as I could to make it understandable to anyone who comes across it. In a nutshell, what the JavaScript code does is use OpenWeatherMap API to get the current local weather (London, with  City ID of 2643741) and display it on the browser.
 
