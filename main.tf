@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "web-files" {
   }
 }
 
-  # Zip the Lamda function on the fly
+  # Zip the Lamda function
 data "archive_file" "source" {
   type        = "zip"
   source_dir  = "../project-1.0/web-files"
