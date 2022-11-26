@@ -92,7 +92,7 @@ The last step involves pushing the codebase to Github using Git CLI. assuming yo
 - Open Git Bash and change to the Projects-1.0 root directory , then run "git init -b main"
 - Stage the files for initial commit using "git add ." command
 
-### Important:
+### Importanttip:
 Run the following command to prevent the exe files within /.terraform directory from being pushed to GitHub (ensure that this is run from the project root directory):
  git update-index --assume-unchanged ~/Desktop/Project-1.0/.terraform/
 If you don't, you will end up with an error about the file exceeding GitHub's file size limit of 100.00 MB
