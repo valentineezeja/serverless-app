@@ -17,7 +17,7 @@ data "archive_file" "source" {
 resource "aws_s3_bucket_object" "file_upload" {
   bucket = "web-files-for-deployment1"
   key    = "project-1.0/web-files.zip"
-  source = "${data.archive_file.source.output_path}" # its mean it depended on zip
+  source = "${data.archive_file.source.output_path}" # this means that it depended on zip
   etag = filemd5(data.archive_file.source.output_path)
 
 }
