@@ -1,0 +1,249 @@
+var.profile
+  tf-profile
+
+  Enter a value: 
+data.archive_file.source: Reading...
+data.archive_file.source: Read complete after 0s [id=64fa7521ee89bac8539719244c5f48991d9aef4e]
+aws_s3_bucket_object.file_upload: Refreshing state... [id=project-1.0/web-files.zip]
+aws_lambda_permission.apigw_lambda: Refreshing state... [id=AllowExecutionFromAPIGateway]
+aws_iam_role.lambda_exec: Refreshing state... [id=serverless_lambda]
+aws_api_gateway_rest_api.api: Refreshing state... [id=mxa6w7azhe]
+aws_s3_bucket.web-files: Refreshing state... [id=web-files-for-deployment1]
+aws_api_gateway_resource.resource: Refreshing state... [id=bemae8]
+aws_api_gateway_method.method: Refreshing state... [id=agm-mxa6w7azhe-bemae8-ANY]
+aws_lambda_function.weather_app: Refreshing state... [id=WeatherApp]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+  ~ update in-place
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_api_gateway_account.account will be created
+  + resource "aws_api_gateway_account" "account" {
+      + cloudwatch_role_arn = (known after apply)
+      + id                  = (known after apply)
+      + throttle_settings   = (known after apply)
+    }
+
+  # aws_api_gateway_deployment.deploy will be created
+  + resource "aws_api_gateway_deployment" "deploy" {
+      + created_date  = (known after apply)
+      + execution_arn = (known after apply)
+      + id            = (known after apply)
+      + invoke_url    = (known after apply)
+      + rest_api_id   = "mxa6w7azhe"
+      + stage_name    = "web"
+    }
+
+  # aws_api_gateway_integration.integration will be created
+  + resource "aws_api_gateway_integration" "integration" {
+      + cache_namespace         = (known after apply)
+      + connection_type         = "INTERNET"
+      + http_method             = "ANY"
+      + id                      = (known after apply)
+      + integration_http_method = "ANY"
+      + passthrough_behavior    = (known after apply)
+      + request_parameters      = {
+          + "integration.request.path.proxy" = "method.request.path.proxy"
+        }
+      + resource_id             = "bemae8"
+      + rest_api_id             = "mxa6w7azhe"
+      + timeout_milliseconds    = 29000
+      + type                    = "AWS_PROXY"
+      + uri                     = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:431227929488:function:WeatherApp/invocations"
+    }
+
+  # aws_api_gateway_integration.lambda_root will be created
+  + resource "aws_api_gateway_integration" "lambda_root" {
+      + cache_namespace         = (known after apply)
+      + connection_type         = "INTERNET"
+      + http_method             = "ANY"
+      + id                      = (known after apply)
+      + integration_http_method = "ANY"
+      + passthrough_behavior    = (known after apply)
+      + resource_id             = "2nytn0mw4c"
+      + rest_api_id             = "mxa6w7azhe"
+      + timeout_milliseconds    = 29000
+      + type                    = "AWS_PROXY"
+      + uri                     = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:431227929488:function:WeatherApp/invocations"
+    }
+
+  # aws_api_gateway_method.proxy_root will be created
+  + resource "aws_api_gateway_method" "proxy_root" {
+      + api_key_required = false
+      + authorization    = "NONE"
+      + http_method      = "ANY"
+      + id               = (known after apply)
+      + resource_id      = "2nytn0mw4c"
+      + rest_api_id      = "mxa6w7azhe"
+    }
+
+  # aws_api_gateway_method_settings.CW_settings will be created
+  + resource "aws_api_gateway_method_settings" "CW_settings" {
+      + id          = (known after apply)
+      + method_path = "*/*"
+      + rest_api_id = "mxa6w7azhe"
+      + stage_name  = "web"
+
+      + settings {
+          + cache_data_encrypted                       = (known after apply)
+          + cache_ttl_in_seconds                       = (known after apply)
+          + caching_enabled                            = (known after apply)
+          + data_trace_enabled                         = true
+          + logging_level                              = "INFO"
+          + metrics_enabled                            = true
+          + require_authorization_for_cache_control    = (known after apply)
+          + throttling_burst_limit                     = -1
+          + throttling_rate_limit                      = -1
+          + unauthorized_cache_control_header_strategy = (known after apply)
+        }
+    }
+
+  # aws_api_gateway_stage.web will be created
+  + resource "aws_api_gateway_stage" "web" {
+      + arn           = (known after apply)
+      + deployment_id = (known after apply)
+      + description   = "Prod / main stage for my initial deployment"
+      + execution_arn = (known after apply)
+      + id            = (known after apply)
+      + invoke_url    = (known after apply)
+      + rest_api_id   = "mxa6w7azhe"
+      + stage_name    = "web"
+      + tags_all      = (known after apply)
+      + web_acl_arn   = (known after apply)
+
+      + access_log_settings {
+          + destination_arn = (known after apply)
+          + format          = "JSON"
+        }
+    }
+
+  # aws_cloudwatch_log_group.CW_group will be created
+  + resource "aws_cloudwatch_log_group" "CW_group" {
+      + arn               = (known after apply)
+      + id                = (known after apply)
+      + name              = "API-Gateway-Execution-Logs_mxa6w7azhe/web"
+      + name_prefix       = (known after apply)
+      + retention_in_days = 7
+      + skip_destroy      = false
+      + tags_all          = (known after apply)
+    }
+
+  # aws_iam_role.cloudwatch will be created
+  + resource "aws_iam_role" "cloudwatch" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "apigateway.amazonaws.com"
+                        }
+                      + Sid       = ""
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "api_gateway_cloudwatch_global"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags_all              = (known after apply)
+      + unique_id             = (known after apply)
+
+      + inline_policy {
+          + name   = (known after apply)
+          + policy = (known after apply)
+        }
+    }
+
+  # aws_iam_role_policy.cloudwatch will be created
+  + resource "aws_iam_role_policy" "cloudwatch" {
+      + id     = (known after apply)
+      + name   = "default"
+      + policy = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "logs:CreateLogGroup",
+                          + "logs:CreateLogStream",
+                          + "logs:DescribeLogGroups",
+                          + "logs:DescribeLogStreams",
+                          + "logs:PutLogEvents",
+                          + "logs:GetLogEvents",
+                          + "logs:FilterLogEvents",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + role   = (known after apply)
+    }
+
+  # aws_lambda_function.weather_app will be updated in-place
+  ~ resource "aws_lambda_function" "weather_app" {
+        id                             = "WeatherApp"
+      ~ last_modified                  = "2022-11-25T10:22:29.000+0000" -> (known after apply)
+      ~ source_code_hash               = "rxnRZPnf2OI7KgtqFkP0RPWJJf6RPvmDwqraCZB5is0=" -> "BxvrtOSHHsDmBJI8Rn5aOYbMvapYCRQ3nHfdNTqBV5Q="
+        tags                           = {}
+        # (20 unchanged attributes hidden)
+
+        # (2 unchanged blocks hidden)
+    }
+
+  # aws_s3_bucket_object.file_upload will be destroyed
+  # (because aws_s3_bucket_object.file_upload is not in configuration)
+  - resource "aws_s3_bucket_object" "file_upload" {
+      - acl                = "private" -> null
+      - bucket             = "web-files-for-deployment1" -> null
+      - bucket_key_enabled = false -> null
+      - content_type       = "binary/octet-stream" -> null
+      - etag               = "d1a2f0b11dcf59cf789c5d7f61357439" -> null
+      - force_destroy      = false -> null
+      - id                 = "project-1.0/web-files.zip" -> null
+      - key                = "project-1.0/web-files.zip" -> null
+      - metadata           = {} -> null
+      - source             = "../project-1.0/web-files.zip" -> null
+      - storage_class      = "STANDARD" -> null
+      - tags               = {} -> null
+      - tags_all           = {} -> null
+    }
+
+  # aws_s3_object.file_upload will be created
+  + resource "aws_s3_object" "file_upload" {
+      + acl                    = "private"
+      + bucket                 = "web-files-for-deployment1"
+      + bucket_key_enabled     = (known after apply)
+      + content_type           = (known after apply)
+      + etag                   = "4c76c6e3cb5df88f6e9114221cd87c05"
+      + force_destroy          = false
+      + id                     = (known after apply)
+      + key                    = "project-1.0/web-files.zip"
+      + kms_key_id             = (known after apply)
+      + server_side_encryption = (known after apply)
+      + source                 = "../project-1.0/web-files.zip"
+      + storage_class          = (known after apply)
+      + tags_all               = (known after apply)
+      + version_id             = (known after apply)
+    }
+
+Plan: 11 to add, 1 to change, 1 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.

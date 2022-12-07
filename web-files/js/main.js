@@ -5,7 +5,7 @@
  */
 
 function weatherBalloon( cityID ) {
-  var key = ${process.env.API_KEY}; //this is broken currently. For now, I manually add my key when I want to run terraform apply 
+  var key = config.SECRET_API_KEY; //this calls the API key variable saved  within config.js
   var CityID = '2643741';
   fetch('https://api.openweathermap.org/data/2.5/weather?id=' + CityID + '&appid=' + key)  
   .then(function(resp) { return resp.json() }) // Convert data to json
