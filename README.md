@@ -172,6 +172,11 @@ I have also added both files and a all .env files to `gitignore``.
 
 When I make these changes, I will update this guide accordingly. Please feel free to suggest edits/improvements or create a pull request.
 
+
+
+
+*************************************************************************************************************************************************************
+
 ## Update 1: the following changes have been made to the deployment:
 1. Changed the method by which the Weather API secret is hidden and called - used JS to save the secret and added it to gitignore
 2. Added the binary media type setting to the API gateway configuration
