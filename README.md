@@ -179,7 +179,7 @@ When I make these changes, I will update this guide accordingly. Please feel fre
 
 **************
 
-## Update 1: the following changes have been made to the deployment:
+## Update 1 (Dec 2022): the following changes have been made to the deployment:
 1. Changed the method by which the Weather API secret is hidden and called - used JS to save the secret and added it to gitignore
 2. Added the binary media type setting to the API gateway configuration
 3. Got the AWS proxy integration method properly configured using the correct format
@@ -187,4 +187,4 @@ When I make these changes, I will update this guide accordingly. Please feel fre
 5. Changed the s3 upload deprecated command (aws_s3_bucket_object.file_upload) to aws_s3_object.file_upload
 6. Created a CloudWatch group and Enabled access logging for the stage as well as execution logging for the API gateway
 7. Created a role and policy to allow the API gateway access and push logs to CloudWatch
-8. Created an output of the plan for the modified version of the deployment (using terraform plan -no-color > filename) to a file called version 2.0 terraform output.txt within the rep
+8. Created an output of the plan for the modified version of the deployment (using terraform plan -no-color > filename) to a file called version 2.0 terraform output.txt within the repo. 
