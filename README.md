@@ -20,7 +20,7 @@
 
 ## Overview:
 Something about the whys...
-In the course of implementing this projct, I had several AWS services to choose from, based on the following requirements for the application:
+In the course of implementing this project, I had several AWS services to choose from, based on the following requirements for the application:
 - 	The deployment should be scalable and cost optimised
 - 	The deployment should be able to withstand the loss of a single application component
 - 	The deployment method should be capable of bringing up and tearing down the entire infrastructure, repeatedly
