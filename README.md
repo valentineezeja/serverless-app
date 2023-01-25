@@ -48,8 +48,6 @@ The only temporary limitation to this solution is that AWS Lambda has size limit
 
 - Extra: Configure a custom domain for the API to make the URL look beautiful 🤳🏾
 
-- Destroy the solution 
-
 # Create the web app using html/css/js
 The code for the web app can be found [here](https://github.com/valentineezeja/Project-1.0/tree/main/web-files). I have added as much comment as I could to make it understandable to anyone who comes across it. In a nutshell, what the JavaScript part of the code does is use OpenWeatherMap API to get the current local weather using the City ID (City of London in this case) and display it on the browser. The Fetch API uses a "fetch" function that takes a URL as its only parameter and returns a json response.
 
@@ -146,11 +144,6 @@ I have also added both files and a all .env files to `gitignore``.
 
 ## **** Extra: Configure a custom domain for the API to make the URL look beautiful
 - This section is currently pending as I am sorting some issues with my DNS providers. I will update this part of the guide once that is sorted; might as well move my domains to Route53 while at it. In the meantime though, here is the proposed URL: weather.valentineezeja.com.
-
-# Destroy the solution
-- To destroy the solution, run the following command from the root directory of the project:
-        `terraform destroy`
-- Confirm command completion and that all resources have been fdeleted.
 
 # Conclusion and final thoughts
 
